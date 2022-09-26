@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  background-color: rgb(215, 250, 221);
 }
 
 .main {
@@ -75,10 +76,13 @@
   list-style: none;
   margin-left: 0;
   padding-left: 0;
-
 }
 
 .card {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
@@ -111,6 +115,10 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.searchInput{
+margin-right: .5rem;
 }
 
 @media (max-width: 600px) {

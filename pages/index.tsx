@@ -1,17 +1,17 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import React from "react";
+import React, { useEffect } from "react";
 import https from "https";
+import { useState } from "react";
 
 const agent = new https.Agent({
-  rejectUnauthorized: false
+  rejectUnauthorized: false,
 });
 
 const defaultEndpoint = "https://rickandmortyapi.com/api/character/";
 
 export async function getServerSideProps() {
-  
   const res = await fetch(defaultEndpoint, { agent } as RequestInit);
 
   const data = await res.json();
@@ -23,9 +23,63 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }) {
-  const { results = [] } = data;
+  const { info, results: defaultResults = [] } = data;
+  const [results, updateResults] = useState(defaultResults);
 
-  console.log("data", data);
+  const [page, updatePage] = useState({
+    ...info,
+    current: defaultEndpoint,
+  });
+
+  const { current } = page;
+
+  useEffect(() => {
+    if (current === defaultEndpoint) return;
+
+    async function request() {
+      const res = await fetch(current);
+      const nextdata = await res.json();
+
+      updatePage({
+        current,
+        ...nextdata.info,
+      });
+
+      if (!nextdata.info?.prev) {
+        updateResults(nextdata.results);
+        return;
+      }
+
+      updateResults((prev) => {
+        return [...prev, ...nextdata.results];
+      });
+    }
+    request();
+  }, [current]);
+
+  function handleMore() {
+    updatePage((prev) => {
+      return {
+        ...prev,
+        current: page?.next,
+      };
+    });
+  }
+
+  function handleOnSubmitSearch(e) {
+    e.preventDefault();
+
+    const { currentTarget = {} } = e;
+    const fields = Array.from(currentTarget?.elements);
+    const fieldQuery = fields.find((field) => field.name === "query");
+
+    const value = fieldQuery.value || "";
+    const endpoint = `https://rickandmortyapi.com/api/character/?name=${value}`;
+
+    updatePage({
+      current: endpoint,
+    });
+  }
 
   return (
     <div className={styles.container}>
@@ -40,14 +94,25 @@ export default function Home({ data }) {
 
         <p className={styles.description}>Rick and Morty wiki</p>
 
+        <form className={styles.searchInput} onSubmit={handleOnSubmitSearch}>
+          <input name="query" type="search" />
+          <button>Search</button>
+        </form>
+
         <ul className={styles.grid}>
-          <li className={styles.card}>
-            <a href="https://nextjs.org/docs">
-              <h2>My Character</h2>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
-          </li>
+          {results.map((result) => {
+            const { name, id, image } = result;
+            return (
+              <li key={id} className={styles.card}>
+                <img src={image} alt={name} className={styles.image} />
+                <h2>{name}</h2>
+              </li>
+            );
+          })}
         </ul>
+        <p>
+          <button onClick={handleMore}>Load more caracteres</button>
+        </p>
       </main>
 
       <footer className={styles.footer}>
