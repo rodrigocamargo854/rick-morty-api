@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React, { useEffect } from "react";
 import https from "https";
+import Link from 'next/link'
 import { useState } from "react";
 
 const agent = new https.Agent({
