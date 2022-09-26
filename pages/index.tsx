@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React, { useEffect } from "react";
 import https from "https";
-import Link from 'next/link'
+import Link from "next/link";
 import { useState } from "react";
 
 const agent = new https.Agent({
@@ -105,8 +105,12 @@ export default function Home({ data }) {
             const { name, id, image } = result;
             return (
               <li key={id} className={styles.card}>
-                <img src={image} alt={name} className={styles.image} />
-                <h2>{name}</h2>
+                <Link href={`/characters/${id}`}>
+                  <a>
+                    <img src={image} alt={name} className={styles.image} />
+                    <h2>{name}</h2>
+                  </a>
+                </Link>
               </li>
             );
           })}

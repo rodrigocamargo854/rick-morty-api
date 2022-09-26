@@ -1,6 +1,9 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import https from "https";
+
+import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
 const agent = new https.Agent({
   rejectUnauthorized: false,
 });
@@ -21,6 +24,9 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Character({ data }) {
+  const { asPath } = useRouter();
+  const notHomePage = asPath !== "/";
+
   const { name, image, gender, location, origin, species, status } = data;
 
   return (
@@ -39,27 +45,39 @@ export default function Character({ data }) {
           <h2>Character-Details</h2>
           <ul>
             <li>
-              <strong>Name</strong>{name}
+              <strong>Name</strong>
+              {name}
             </li>
             <li>
-              <strong>Status</strong>{status}
+              <strong>Status</strong>
+              {status}
             </li>
             <li>
-              <strong>Gender</strong>{gender}
+              <strong>Gender</strong>
+              {gender}
             </li>
             <li>
-              <strong>Species</strong>{species}
+              <strong>Species</strong>
+              {species}
             </li>
             <li>
-              <strong>Location</strong>{location?.name}
+              <strong>Location</strong>
+              {location?.name}
             </li>
             <li>
-              <strong>Originally</strong>{origin?.name}
+              <strong>Originally</strong>
+              {origin?.name}
             </li>
           </ul>
         </div>
       </div>
-
+      {notHomePage && (
+        <Link href="/">
+          <a>
+            <strong>Back to all Characteres</strong>
+          </a>
+        </Link>
+      )}
       <main className={styles.main}>
         <h1 className={styles.title}>Wubba Lubba Dub Dub</h1>
       </main>
