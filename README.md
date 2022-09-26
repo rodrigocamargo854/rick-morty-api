@@ -19,7 +19,8 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 This is a simple aplication to training and studing a lot concepts abou nextjs, using RICK AND MORTY api :
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [RICK AND MORTY API](https://https://rickandmortyapi.com/) - https://rickandmortyapi.com/documentation
+- [RICK AND MORTY API](https://https://rickandmortyapi.com/) - rickandmortyapi.com/documentation
+
 
 
 ## Deploy on Vercel

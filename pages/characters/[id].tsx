@@ -37,7 +37,7 @@ export default function Character({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="profile">
+      <div className={styles.profile}>
         <div className="profile-image">
           <img src={image} alt={name} />
         </div>
