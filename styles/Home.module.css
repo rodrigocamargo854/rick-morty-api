@@ -1,5 +1,10 @@
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding: 0 2rem;
+  background-color: rgb(215, 250, 221);
 }
 
 .main {
@@ -71,9 +76,17 @@
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
+
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .card {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
@@ -82,7 +95,6 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
 }
 
 .card:hover,
@@ -96,7 +108,9 @@
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
 }
+.profile{
 
+}
 .card p {
   margin: 0;
   font-size: 1.25rem;
@@ -106,6 +120,10 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.searchInput{
+margin-right: .5rem;
 }
 
 @media (max-width: 600px) {
