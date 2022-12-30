@@ -21,6 +21,7 @@ This is a simple aplication to training and studing a lot concepts abou nextjs, 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [RICK AND MORTY API](https://https://rickandmortyapi.com/) - rickandmortyapi.com/documentation
 
+![rickandmorty](https://user-images.githubusercontent.com/47711649/192297584-398d1183-edf1-4681-8c22-c0abf1868b82.gif)
 
 
 ## Deploy on Vercel
