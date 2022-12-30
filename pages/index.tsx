@@ -10,11 +10,6 @@ const agent = new https.Agent({
   rejectUnauthorized: false,
 });
 
-type FildsPropsTypes = {
-  name: string;
-  value: string | unknown;
-};
-
 const defaultEndpoint = "https://rickandmortyapi.com/api/character/";
 
 export async function getServerSideProps() {
