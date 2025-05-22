@@ -1,10 +1,15 @@
+/* 🌟 Global Container */
 .container {
-  background-color: #fbfdfc; /* This is a light green color */
+  background: linear-gradient(to bottom right, #0f172a, #1e293b);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #f1f5f9;
+  padding: 2rem;
 }
+
+/* 🌟 Main */
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -13,64 +18,105 @@
   align-items: center;
 }
 
+/* 🌟 Title */
 .title {
   margin: 0;
-  font-size: 2rem;
-  color: #333;
+  font-size: 3rem;
+  background: linear-gradient(90deg, #4ade80, #60a5fa, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+/* 🌟 Description */
 .description {
-  color: #666;
+  color: #cbd5e1;
   font-size: 1.25rem;
+  margin-top: 0.5rem;
 }
 
+/* 🌟 Search Input */
 .searchInput {
   margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
 }
 
+.searchInput input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background-color: #1e293b;
+  color: #f1f5f9;
+  outline: none;
+}
+
+.searchInput input:focus {
+  border-color: #38bdf8;
+}
+
+.searchInput button {
+  padding: 0.75rem 1.2rem;
+  border-radius: 8px;
+  background-color: #4ade80;
+  color: #0f172a;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.searchInput button:hover {
+  background-color: #22c55e;
+}
+
+/* 🌟 Grid */
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
   margin-top: 2rem;
 }
 
+/* 🌟 Card */
 .card {
-  margin: 1rem;
-  flex-basis: 45%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
   padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.card:hover {
+  transform: scale(1.05);
+  border-color: #4ade80;
 }
 
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
+  color: #f1f5f9;
 }
 
+/* 🌟 Image */
 .image {
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
+/* 🌟 Footer */
 .footer {
   width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #334155;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem 0;
+  color: #64748b;
 }
 
 .footer img {
@@ -79,10 +125,16 @@
 
 .footer a {
   display: flex;
-  justify-content: center;
   align-items: center;
+  color: #94a3b8;
+  text-decoration: none;
 }
 
+.footer a:hover {
+  color: #4ade80;
+}
+
+/* 🌟 Profile */
 .profile {
   display: flex;
   flex-direction: row;
@@ -101,28 +153,30 @@
 
 .profile-image img {
   max-width: 100%;
-  border-radius: 50%; /* This will make the image circular, remove if not needed */
+  border-radius: 50%;
+  border: 4px solid #4ade80;
 }
 
 .profile-details {
-  color: #666;
+  color: #cbd5e1;
   flex: 2;
 }
 
 .profile-details h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 .profile-details ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
 .profile-details li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .profile-details li strong {
   margin-right: 0.5rem;
+  color: #38bdf8;
 }
